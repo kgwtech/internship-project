@@ -1,5 +1,11 @@
 from pages.base_page import Page
-from pages.main_page import MainPage
+from pages.market import Market
+from pages.my_menu import MyMenu
+from pages.off_plan import OffPlan
+from pages.referral import Referral
+from pages.secondary import Secondary
+from pages.settings import Settings
+from pages.workshops import Workshops
 
 
 class Application:
@@ -11,4 +17,12 @@ class Application:
         self.page = Page(driver)
 
         # Page Objects
-        self.main_page = MainPage(driver)
+        self.market = Market(driver)
+        self.my_menu = MyMenu(driver)
+        self.off_plan = OffPlan(driver)
+        self.referral = Referral(driver)
+        self.secondary = Secondary(driver)
+        self.settings = Settings(driver)
+        self.workshops = Workshops(driver)
+
+

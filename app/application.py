@@ -3,6 +3,7 @@ from pages.main import Main
 from pages.market import Market
 from pages.my_menu import MyMenu
 from pages.off_plan import OffPlan
+from pages.partner_sub_pages import PartnerSubPages
 from pages.referral import Referral
 from pages.secondary import Secondary
 from pages.settings import Settings
@@ -23,6 +24,7 @@ class Application:
         self.market = Market(driver)
         self.my_menu = MyMenu(driver)
         self.off_plan = OffPlan(driver)
+        self.partner_sub_pages = PartnerSubPages(driver)
         self.referral = Referral(driver)
         self.secondary = Secondary(driver)
         self.settings = Settings(driver)

@@ -1,7 +1,10 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.firefox.options import Options as FirefoxOptions
 from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.firefox.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
+from webdriver_manager.firefox import GeckoDriverManager
 from selenium.webdriver.support.wait import WebDriverWait
 from app.application import Application
 from support.logger import logger
@@ -17,7 +20,7 @@ def browser_init(context, scenario_name):
     service = Service(driver_path)
     context.driver = webdriver.Chrome(service=service)
 
-    ''' HEADLESS M'''
+    ''' HEADLESS CHROME'''
     # options = webdriver.ChromeOptions()
     # options.add_argument('headless')
     # service = Service(ChromeDriverManager().install())
@@ -27,7 +30,6 @@ def browser_init(context, scenario_name):
     # )
 
     ''' FIREFOX BROWSER '''
-
     # service = Service(executable_path='/Users/prime./Downloads/internship-project/geckodriver')
     # context.driver = webdriver.Firefox(service=service)
 
@@ -35,22 +37,23 @@ def browser_init(context, scenario_name):
     # context.driver = webdriver.Safari()
 
     ''' BROWSERSTACK '''
+    # cloud testing
     # email: telme0@btcmod.com
     # pass: fakepass123
-    # bs_user = 'telme_Jt8xpc'
-    # bs_key = 'bFfymLgkpVKb4t7iAK4T'
-    # url = f"https://{bs_user}:{bs_key}@hub-cloud.browserstack.com/wd/hub"
-    #
-    # options = Options()
-    # bstack_options = {
-    #     'os': 'OS X',
-    #     'osVersion': 'Ventura',
-    #     'browserName': 'Chrome',
-    #     'sessionName': scenario_name
-    # }
-    # options.set_capability('bstack:options', bstack_options)
-    # context.driver = webdriver.Remote(command_executor=url, options=options)
-    #
+    bs_user = 'telme_Jt8xpc'
+    bs_key = 'bFfymLgkpVKb4t7iAK4T'
+    url = f"https://{bs_user}:{bs_key}@hub-cloud.browserstack.com/wd/hub"
+
+    options = Options()
+    bstack_options = {
+        'os': 'OS X',
+        'osVersion': 'Ventura',
+        'browserName': 'Chrome',
+        'sessionName': scenario_name
+    }
+    options.set_capability('bstack:options', bstack_options)
+    context.driver = webdriver.Remote(command_executor=url, options=options)
+
     # ''' BROWSER TESTING __INIT__ '''
     context.driver.maximize_window()
     context.driver.implicitly_wait(10)

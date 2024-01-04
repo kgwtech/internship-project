@@ -1,6 +1,7 @@
 Feature: My Menu Page UI Tests
   UI automation tests for Reelly.io My Menu Page
 
+  @smoke @regression
   Scenario: User can open the Contact us page
     Given Open sign in page
     Then Enter kgwtech@outlook.com and test123

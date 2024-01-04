@@ -102,3 +102,4 @@ class Page:
     def verify_partial_url(self, expected_partial_url):
         self.wait.until(EC.url_contains(expected_partial_url),
                         message=f"Expected {expected_partial_url} not in url")
+
